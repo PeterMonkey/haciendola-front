@@ -1,0 +1,50 @@
+.container {
+    height: 27em;
+    width: 19em;
+    border-width: 0.5px;
+    border-style: solid;
+    border-color: black;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    gap: 4px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    height: 30px;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.form-control {
+    font-size: 16px; /* Ejemplo: tamaño de fuente de 16 píxeles */
+    font-family: 'Arial', sans-serif; /* Ejemplo: fuente Arial o sans-serif */
+    line-height: 14px; /* Ejemplo: altura de línea de 24 píxeles */
+    border-radius: 20px;
+    padding-left: 10px;
+    height: 35px;
+}

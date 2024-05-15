@@ -50,11 +50,12 @@ export class RegisterComponent {
     }
   }
 
+  signInRedirect() {
+    this.router.navigateByUrl('/')
+  }
+
   productRedirect() {
     this.router.navigateByUrl('/products')
   }
 
-  signInRedirect() {
-    this.router.navigateByUrl('')
-  }
 }

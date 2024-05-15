@@ -48,3 +48,13 @@ form {
     padding-left: 10px;
     height: 35px;
 }
+
+.sign-up p {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-up p {
+    cursor: pointer;
+}

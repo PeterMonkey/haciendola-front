@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../core/services/login.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   user: string;
   password: string;
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private router: Router) {
     this.user = ''
     this.password = ''
   }
@@ -24,5 +25,9 @@ export class LoginComponent {
   onLogin(){
     this.loginService.login({userName: this.user, password: this.password}).subscribe(res => console.log(res))
     
+  }
+
+  signUpRedirect() {
+    this.router.navigateByUrl('/sign-up')
   }
 }

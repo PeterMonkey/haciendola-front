@@ -48,3 +48,13 @@ form {
     padding-left: 10px;
     height: 35px;
 }
+
+.sign-in p {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.sign-in p {
+    cursor: pointer;
+}

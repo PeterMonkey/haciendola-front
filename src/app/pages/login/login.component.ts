@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { LoginService } from '../../core/services/login.service';
+import { LoginService } from '../../core/services/login/login.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -30,7 +30,10 @@ export class LoginComponent {
     if (this.myForm.valid) {
       const user = this.myForm.get('user')?.value;
       const password = this.myForm.get('password')?.value;
-      this.loginService.login({userName: user, password: password}).subscribe(res => console.log(res))
+      this.loginService.login({userName: user, password: password}).subscribe(res => {
+        localStorage.setItem('token', res.token)
+        this.productRedirect()
+      })
     }
   }
 
@@ -38,6 +41,10 @@ export class LoginComponent {
   //   this.loginService.login({userName: this.user, password: this.password}).subscribe(res => console.log(res))
     
   // }
+
+  productRedirect() {
+    this.router.navigateByUrl('/products')
+  }
 
   signUpRedirect() {
     this.router.navigateByUrl('/sign-up')

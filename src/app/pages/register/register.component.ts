@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterService } from '../../core/services/register/register.service'; 
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,11 @@ export class RegisterComponent {
 
   myForm!: FormGroup;
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+  constructor(
+    private router: Router, 
+    private formBuilder: FormBuilder, 
+    private registerService: RegisterService
+  ) {
     this.myForm = this.formBuilder.group({
       user: ['', Validators.required],
       email: ['', Validators.required],
@@ -38,10 +43,15 @@ export class RegisterComponent {
       const user = this.myForm.get('user')?.value;
       const email = this.myForm.get('email')?.value;
       const password = this.myForm.get('password')?.value;
-      console.log(user)
-      console.log(email)
-      console.log(password)
+      this.registerService.register({userName: user, email, password}).subscribe(res => {
+        localStorage.setItem('token', res.token)
+        this.productRedirect()
+      })
     }
+  }
+
+  productRedirect() {
+    this.router.navigateByUrl('/products')
   }
 
   signInRedirect() {

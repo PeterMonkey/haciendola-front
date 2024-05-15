@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from '../../core/services/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,16 +12,17 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
+  
   user: string;
   password: string;
 
-  constructor() {
+  constructor(private loginService: LoginService) {
     this.user = ''
     this.password = ''
   }
 
   onLogin(){
-    console.log(this.user)
-    console.log(this.password)
+    this.loginService.login({userName: this.user, password: this.password}).subscribe(res => console.log(res))
+    
   }
 }

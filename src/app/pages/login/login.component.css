@@ -58,3 +58,8 @@ form {
 .sign-up p {
     cursor: pointer;
 }
+
+span {
+    color: red;
+    font-size: 14px;
+}

@@ -1,15 +1,25 @@
 <div class="container">
     <h1>Login</h1>
-    <form >
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="usuario">User</label>
-        <input type="text" class="form-control" id="user" [(ngModel)]="user"  name="user" required>
+        <input type="text" class="form-control" id="user" name="user" formControlName="user" required>
+        @if(myForm.controls['user'].errors?.['required'] && myForm.controls['user'].touched){
+            <span>El usuario es obligatorio</span>
+        }
       </div>
+      
       <div class="form-group">
         <label for="contrasena">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="password"  name="password" required>
+        <input type="password" class="form-control" id="password" name="password" formControlName="password" required>
+        @if(myForm.controls['password'].errors?.['required'] && myForm.controls['password'].touched){
+            <span>La contraseña es obligatoria</span>
+        }
+        @if(myForm.controls['password'].errors?.['required'] && myForm.controls['password'].errors?.['minlength']){
+            <span>La contraseña es muy corta</span>
+        }
       </div>
-      <button type="submit" class="btn" (click)="onLogin()">Sign in</button>
+      <button type="submit" class="btn">Sign in</button>
     </form>
     <div class="sign-up" (click)="signUpRedirect()">
         <p>SignUp</p>

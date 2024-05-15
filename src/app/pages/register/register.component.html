@@ -1,21 +1,40 @@
 <div class="container">
     <h1>Register</h1>
-    <form >
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="usuario">User</label>
-        <input type="text" class="form-control" id="usuario"  name="usuario" required>
+        <input type="text" class="form-control" id="user" formControlName="user" name="user" required>
+        @if(myForm.controls['user'].errors?.['required'] && myForm.controls['user'].touched){
+            <span>El usuario es obligatorio</span>
+        }
       </div>
       <div class="form-group">
-        <label for="usuario">Email</label>
-        <input type="text" class="form-control" id="email"  name="email" required>
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email" name="email" required>
+        @if(myForm.controls['email'].errors?.['required'] && myForm.controls['email'].touched){
+            <span>El email es obligatorio</span>
+        }
+        @if(myForm.controls['email'].errors?.['email']){
+            <span>El email es invalido</span>
+        }
       </div>
       <div class="form-group">
         <label for="contrasena">Password</label>
-        <input type="password" class="form-control" id="contrasena"  name="contrasena" required>
+        <input type="password" class="form-control" id="password" formControlName="password" name="password" required>
+        @if(myForm.controls['password'].errors?.['required'] && myForm.controls['password'].touched){
+            <span>La contraseña es obligatoria</span>
+        }
+      </div>
+      <div class="form-group">
+        <label for="contrasena">Repeat password</label>
+        <input type="password" class="form-control" id="repeat_password" formControlName="repeat_password" name="repeat_password" required>
+        @if (validatePassword(myForm) === false) {
+            <span>La contraseña no coincide</span>
+        }
       </div>
       <button type="submit" class="btn">Sign Up</button>
     </form>
-    <div class="sign-in" (click)="signInRedirect()">
+    <div class="sign-in">
         <p>SignIn</p>
     </div>
   </div>

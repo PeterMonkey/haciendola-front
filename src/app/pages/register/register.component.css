@@ -1,5 +1,5 @@
 .container {
-    height: 30em;
+    height: 37em;
     width: 19em;
     border-width: 0.5px;
     border-style: solid;
@@ -57,4 +57,9 @@ form {
 
 .sign-in p {
     cursor: pointer;
+}
+
+span {
+    color: red;
+    font-size: 14px;
 }

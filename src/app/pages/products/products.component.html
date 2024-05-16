@@ -1,0 +1,45 @@
+<div class="container">
+    <button class="btn-add" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <svg 
+            fill="currentColor" 
+            stroke-width="0" 
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 512 512" 
+            height="3em" 
+            width="3em" 
+            style="overflow: visible; color: currentcolor;">
+            <path fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="32" d="M256 112 256 400"></path><path fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="round" stroke-width="32" d="M400 256 112 256">
+
+            </path>
+        </svg>
+    </button>
+    <app-modal></app-modal>
+    <div class="container-product">
+        <div class="header">
+            <div class="header-element">Handle</div>
+            <div class="header-element">Title</div>
+            <div class="header-element">SKU</div>
+            <div class="header-element">Grams</div>
+            <div class="header-element">Stock</div>
+            <div class="header-element">Price</div>
+            <div class="header-element">Compare Price</div>
+            <div class="header-element">Barcode</div>
+        </div>
+        <div class="content">
+            @if(products) {
+                @for (item of products.response; track item.id) {
+                    <div class="element">
+                        <div class="element-data">{{item.handle}}</div>
+                        <div class="element-data">{{item.title}}</div>
+                        <div class="element-data">{{item.sku}}</div>
+                        <div class="element-data">{{item.grams}}</div>
+                        <div class="element-data">{{item.stock}}</div>
+                        <div class="element-data">{{item.price}}</div>
+                        <div class="element-data">{{item.compare_price}}</div>
+                        <div class="element-data">{{item.barcode}}</div>
+                    </div>
+                    }
+                }
+        </div>
+    </div>
+</div>
